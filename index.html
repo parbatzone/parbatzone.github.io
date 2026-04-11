@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parbat Chaulagain — limox</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --bg:#0a0a0a;--bg2:#111111;--bg3:#161616;
+    --border:#1e1e1e;--border2:#2a2a2a;
+    --green:#00ff88;--green2:#00cc6a;
+    --green-dim:rgba(0,255,136,0.08);
+    --text:#e8e8e8;--text2:#888;--text3:#555;
+    --mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif;
+  }
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;overflow-x:hidden;}
+  body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);pointer-events:none;z-index:9999;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;height:56px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-logo{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--green);letter-spacing:0.05em;}
+  .nav-logo span{color:var(--text3);}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{font-family:var(--mono);font-size:12px;color:var(--text2);text-decoration:none;letter-spacing:0.08em;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--green);}
+  section{padding:100px 2rem 60px;max-width:860px;margin:0 auto;}
+  #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:56px;position:relative;}
+  .hero-pre{font-family:var(--mono);font-size:12px;color:var(--green);letter-spacing:0.12em;margin-bottom:1rem;}
+  .hero-pre::before{content:'> ';color:var(--text3);}
+  .hero-name{font-family:var(--mono);font-size:clamp(36px,7vw,64px);font-weight:700;color:var(--text);line-height:1;margin-bottom:0.3rem;letter-spacing:-0.02em;}
+  .hero-name .accent{color:var(--green);}
+  .hero-handle{font-family:var(--mono);font-size:14px;color:var(--text3);margin-bottom:1.25rem;letter-spacing:0.06em;}
+  .hero-handle span{color:var(--green);}
+  .hero-title{font-family:var(--mono);font-size:clamp(13px,2.2vw,17px);color:var(--text2);margin-bottom:2rem;letter-spacing:0.02em;}
+  .cursor{display:inline-block;width:10px;height:1.1em;background:var(--green);vertical-align:middle;margin-left:4px;animation:blink 1.2s step-end infinite;}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+  .hero-desc{font-size:15px;color:var(--text2);line-height:1.8;max-width:520px;margin-bottom:2.5rem;}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;padding:10px 22px;border-radius:4px;cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+  .btn-primary{background:var(--green);color:#000;border:1px solid var(--green);font-weight:700;}
+  .btn-primary:hover{background:var(--green2);border-color:var(--green2);}
+  .btn-secondary{background:transparent;color:var(--text2);border:1px solid var(--border2);}
+  .btn-secondary:hover{border-color:var(--green);color:var(--green);}
+  .hero-grid{position:absolute;right:-40px;top:50%;transform:translateY(-50%);opacity:0.04;pointer-events:none;}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:3rem;}
+  .section-num{font-family:var(--mono);font-size:12px;color:var(--green);letter-spacing:0.1em;}
+  .section-title{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--text);letter-spacing:-0.01em;}
+  .section-line{flex:1;height:1px;background:var(--border);max-width:300px;}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:2rem;}
+  .skill-cat{background:var(--bg2);padding:1.25rem;}
+  .skill-cat-title{font-family:var(--mono);font-size:11px;color:var(--green);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .skill-tag{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg3);border:1px solid var(--border2);padding:3px 10px;border-radius:3px;}
+  .projects-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+  .project-card{background:var(--bg2);padding:1.5rem;transition:background 0.15s;position:relative;}
+  .project-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:transparent;transition:background 0.2s;}
+  .project-card:hover{background:var(--bg3);}
+  .project-card:hover::before{background:var(--green);}
+  .project-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:8px;}
+  .project-name{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.01em;}
+  .project-status{font-family:var(--mono);font-size:10px;padding:3px 10px;border-radius:3px;letter-spacing:0.1em;white-space:nowrap;flex-shrink:0;}
+  .status-live{background:rgba(0,255,136,0.1);color:var(--green);border:1px solid rgba(0,255,136,0.2);}
+  .status-dev{background:rgba(255,170,0,0.1);color:#ffaa00;border:1px solid rgba(255,170,0,0.2);}
+  .project-desc{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px;}
+  .project-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .project-tag{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.06em;}
+  .project-tag::before{content:'#';color:var(--green);margin-right:1px;}
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:2rem;}
+  .contact-item{background:var(--bg2);padding:1.25rem;text-decoration:none;display:block;transition:background 0.15s;}
+  .contact-item:hover{background:var(--green-dim);}
+  .contact-platform{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:6px;}
+  .contact-handle{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--green);}
+  .terminal-block{background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+  .terminal-bar{background:var(--bg3);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:8px;}
+  .dot{width:10px;height:10px;border-radius:50%;}
+  .dot-r{background:#ff5f57;}.dot-y{background:#febc2e;}.dot-g{background:#28c840;}
+  .terminal-body{padding:1.25rem 1.5rem;font-family:var(--mono);font-size:13px;line-height:2;}
+  .t-prompt{color:var(--text3);}.t-cmd{color:var(--text);}.t-out{color:var(--green);}.t-comment{color:var(--text3);}
+  .tcursor{display:inline-block;width:8px;height:13px;background:var(--green);animation:blink 1.2s step-end infinite;vertical-align:middle;}
+  footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:0.08em;}
+  footer span{color:var(--green);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">limox<span>.dev</span></div>
+  <ul class="nav-links">
+    <li><a href="#hero">~</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-pre">whoami</p>
+  <h1 class="hero-name">Parbat <span class="accent">Chaulagain</span></h1>
+  <p class="hero-handle">aka <span>limox</span></p>
+  <p class="hero-title">cybersecurity / developer / founder<span class="cursor"></span></p>
+  <p class="hero-desc">
+    Offensive security learner. Builder of things that run in the dark.
+    Running BYTEX, NightWolf Hosting, and Pixel Production out of Kathmandu.
+  </p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn btn-primary">./projects</a>
+    <a href="#contact" class="btn btn-secondary">get_in_touch</a>
+  </div>
+  <svg class="hero-grid" width="320" height="320" viewBox="0 0 320 320">
+    <defs>
+      <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+        <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#00ff88" stroke-width="0.5"/>
+      </pattern>
+    </defs>
+    <rect width="320" height="320" fill="url(#grid)"/>
+  </svg>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">skills</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-cat">
+      <p class="skill-cat-title">offensive</p>
+      <div class="skill-tags">
+        <span class="skill-tag">nmap</span>
+        <span class="skill-tag">burp suite</span>
+        <span class="skill-tag">wireshark</span>
+        <span class="skill-tag">wifi pentest</span>
+        <span class="skill-tag">wpa2 crack</span>
+        <span class="skill-tag">privesc</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <p class="skill-cat-title">platforms</p>
+      <div class="skill-tags">
+        <span class="skill-tag">kali linux</span>
+        <span class="skill-tag">parrot os</span>
+        <span class="skill-tag">tryhackme</span>
+        <span class="skill-tag">htb</span>
+        <span class="skill-tag">ubuntu server</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <p class="skill-cat-title">dev</p>
+      <div class="skill-tags">
+        <span class="skill-tag">node.js</span>
+        <span class="skill-tag">discord.js</span>
+        <span class="skill-tag">next.js</span>
+        <span class="skill-tag">python</span>
+        <span class="skill-tag">bash</span>
+        <span class="skill-tag">c</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <p class="skill-cat-title">tools</p>
+      <div class="skill-tags">
+        <span class="skill-tag">pm2</span>
+        <span class="skill-tag">git</span>
+        <span class="skill-tag">ollama</span>
+        <span class="skill-tag">nginx</span>
+        <span class="skill-tag">docker</span>
+      </div>
+    </div>
+  </div>
+  <div class="terminal-block">
+    <div class="terminal-bar">
+      <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+    </div>
+    <div class="terminal-body">
+      <p><span class="t-prompt">parbat@kali:~$ </span><span class="t-cmd">cat certifications.txt</span></p>
+      <p><span class="t-out">[ ] eJPT</span> <span class="t-comment">— in progress</span></p>
+      <p><span class="t-out">[ ] OSCP</span> <span class="t-comment">— target 2026</span></p>
+      <p><span class="t-prompt">parbat@kali:~$ </span><span class="tcursor"></span></p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">projects</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-list">
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-name">BYTEX</span>
+        <span class="project-status status-live">LIVE</span>
+      </div>
+      <p class="project-desc">Global tech & cybersecurity news media. Covers AI, infosec, and dev news across bytex.news and bytex.news.np.</p>
+      <div class="project-tags">
+        <span class="project-tag">media</span>
+        <span class="project-tag">cybersecurity</span>
+        <span class="project-tag">content</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-name">NightWolf Hosting</span>
+        <span class="project-status status-dev">IN PROGRESS</span>
+      </div>
+      <p class="project-desc">Discord bot development & hosting. Self-hosted infrastructure running Ubuntu Server + Node.js + PM2.</p>
+      <div class="project-tags">
+        <span class="project-tag">node.js</span>
+        <span class="project-tag">discord</span>
+        <span class="project-tag">self-hosted</span>
+        <span class="project-tag">pm2</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-name">Pixel Production</span>
+        <span class="project-status status-live">LIVE</span>
+      </div>
+      <p class="project-desc">Photo studio in Kathmandu. Portrait editing, cinematic color grading, and print services.</p>
+      <div class="project-tags">
+        <span class="project-tag">photography</span>
+        <span class="project-tag">python</span>
+        <span class="project-tag">pillow</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-name">Cybersec Lab</span>
+        <span class="project-status status-dev">IN PROGRESS</span>
+      </div>
+      <p class="project-desc">Home lab: WiFi pentesting (WPA2 handshake capture), active directory attacks, web app exploitation via PortSwigger & HTB.</p>
+      <div class="project-tags">
+        <span class="project-tag">kali</span>
+        <span class="project-tag">wifi-pentest</span>
+        <span class="project-tag">ejpt-prep</span>
+        <span class="project-tag">web-attacks</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">contact</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="contact-grid">
+    <a class="contact-item" href="mailto:limoxlost@proton.me">
+      <p class="contact-platform">email</p>
+      <p class="contact-handle">limoxlost@proton.me</p>
+    </a>
+    <a class="contact-item" href="https://discord.com/users/_limox_" target="_blank">
+      <p class="contact-platform">discord</p>
+      <p class="contact-handle">_limox_</p>
+    </a>
+    <a class="contact-item" href="https://instagram.com/_limox_" target="_blank">
+      <p class="contact-platform">instagram</p>
+      <p class="contact-handle">@_limox_</p>
+    </a>
+    <a class="contact-item" href="https://www.linkedin.com/in/parbat-chaulagain-5004b1366/" target="_blank">
+      <p class="contact-platform">linkedin</p>
+      <p class="contact-handle">parbat-chaulagain</p>
+    </a>
+    <a class="contact-item" href="https://github.com/parbatzone" target="_blank">
+      <p class="contact-platform">github</p>
+      <p class="contact-handle">parbatzone</p>
+    </a>
+    <a class="contact-item" href="https://bytex.news" target="_blank">
+      <p class="contact-platform">bytex</p>
+      <p class="contact-handle">bytex.news</p>
+    </a>
+  </div>
+  <div class="terminal-block">
+    <div class="terminal-bar">
+      <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+    </div>
+    <div class="terminal-body">
+      <p><span class="t-prompt">visitor@limox:~$ </span><span class="t-cmd">./reach_out.sh</span></p>
+      <p><span class="t-out">Based in Kathmandu, Nepal.</span></p>
+      <p><span class="t-out">Open to: collab, cybersec, builds.</span></p>
+      <p><span class="t-out">Response time: usually fast.</span></p>
+    </div>
+  </div>
+</sectio
