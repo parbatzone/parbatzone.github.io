@@ -92,19 +92,18 @@ main{position:relative;z-index:2;}
 .hero-tag::before{content:'';display:block;width:30px;height:1px;background:var(--green);}
 .hero-headline{
   font-family:var(--display);
-  font-size:clamp(64px,10vw,140px);
+  font-size:clamp(52px,11vw,148px);
   font-weight:800;
-  line-height:0.92;
+  line-height:0.9;
   letter-spacing:-0.03em;
   margin-bottom:0;
   overflow:hidden;
 }
 .hero-line{display:block;opacity:0;transform:translateY(100%);}
 .hero-line.l1{animation:slideUp 0.8s 0.7s cubic-bezier(0.16,1,0.3,1) forwards;}
-.hero-line.l2{animation:slideUp 0.8s 0.85s cubic-bezier(0.16,1,0.3,1) forwards;}
-.hero-line.l3{animation:slideUp 0.8s 1.0s cubic-bezier(0.16,1,0.3,1) forwards;}
+.hero-line.l2{animation:slideUp 0.8s 0.9s cubic-bezier(0.16,1,0.3,1) forwards;}
 .hero-line .outline{
-  -webkit-text-stroke:1px rgba(242,240,235,0.3);
+  -webkit-text-stroke:1px rgba(242,240,235,0.25);
   color:transparent;
 }
 .hero-line .green{color:var(--green);}
@@ -283,21 +282,100 @@ footer{
 .r.v{opacity:1;transform:translateY(0);}
 .r2{transition-delay:0.1s;}.r3{transition-delay:0.2s;}.r4{transition-delay:0.3s;}
 
-/* RESPONSIVE */
-@media(max-width:900px){
-  nav{padding:1.5rem 1.5rem;}
-  #hero,.section{padding-left:1.5rem;padding-right:1.5rem;}
+/* RESPONSIVE — TABLET */
+@media(max-width:1024px){
   .about-grid{grid-template-columns:1fr;gap:3rem;}
   .skills-grid{grid-template-columns:1fr 1fr;}
-  .contact-links{grid-template-columns:1fr 1fr;}
-  footer{padding:1.5rem;}
-  .hero-headline{font-size:clamp(48px,12vw,80px);}
 }
-@media(max-width:600px){
+
+/* RESPONSIVE — MOBILE */
+@media(max-width:768px){
+  /* hide custom cursor on touch */
+  #cursor,#cursor-ring{display:none;}
+  html{cursor:auto;}
+
+  /* nav */
+  nav{padding:1.2rem 1.4rem;background:rgba(6,6,10,0.96);}
+  .nav-left{display:none;}
+  .status{display:none;}
+  .nav-right{gap:1.4rem;}
+  .nav-right a{font-size:10px;}
+
+  /* hero */
+  #hero{padding:0 1.4rem 2rem;padding-top:80px;min-height:100svh;}
+  .hero-tag{font-size:9px;margin-bottom:1.2rem;}
+  .hero-headline{font-size:clamp(48px,14vw,80px);line-height:0.9;}
+  .hero-bottom{flex-direction:column;align-items:flex-start;gap:1.5rem;padding-top:2rem;}
+  .hero-desc{font-size:13px;max-width:100%;}
+  .hero-scroll{display:none;}
+
+  /* sections */
+  .section{padding:4rem 1.4rem;}
+  .section-label{margin-bottom:2.5rem;}
+
+  /* about */
+  .about-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .about-big{font-size:clamp(28px,8vw,44px);}
+  .about-stats{grid-template-columns:1fr 1fr;}
+  .about-text{font-size:13px;}
+
+  /* projects */
+  .projects-header{flex-direction:column;align-items:flex-start;gap:0.8rem;margin-bottom:2rem;}
+  .projects-title{font-size:clamp(28px,8vw,42px);}
+  .project-row{
+    grid-template-columns:auto 1fr auto;
+    gap:1rem;padding:1.4rem 0;
+  }
+  .proj-tags{display:none;}
+  .proj-name{font-size:clamp(16px,4.5vw,22px);}
+  .proj-arrow{width:28px;height:28px;font-size:14px;}
+
+  /* skills */
   .skills-grid{grid-template-columns:1fr;}
+  .skill-block{padding:1.4rem;}
+  .terminal-body{padding:1rem 1.2rem;font-size:11px;}
+
+  /* contact */
+  .contact-big{font-size:clamp(36px,12vw,60px);}
+  .contact-links{grid-template-columns:1fr 1fr;}
+  .contact-link{padding:1.4rem 1.2rem 1.2rem;}
+  .cl-name{font-size:14px;}
+
+  /* footer */
+  footer{padding:1.4rem;flex-direction:column;align-items:flex-start;gap:0.5rem;}
+}
+
+/* RESPONSIVE — SMALL MOBILE */
+@media(max-width:400px){
+  .hero-headline{font-size:clamp(40px,13vw,60px);}
   .contact-links{grid-template-columns:1fr;}
-  .project-row{grid-template-columns:auto 1fr;gap:1rem;}
-  .proj-tags,.proj-arrow{display:none;}
+  .nav-right{gap:1rem;}
+  .about-stats{grid-template-columns:1fr 1fr;}
+}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;background:none;border:1px solid var(--border);
+  border-radius:6px;padding:8px 10px;cursor:pointer;
+  flex-direction:column;gap:5px;
+}
+.hamburger span{display:block;width:18px;height:1px;background:var(--white);transition:all 0.3s;}
+.hamburger.open span:first-child{transform:translateY(6px) rotate(45deg);}
+.hamburger.open span:last-child{transform:translateY(-6px) rotate(-45deg);}
+
+/* MOBILE NAV MENU */
+@media(max-width:768px){
+  .hamburger{display:flex;}
+  .status{display:none;}
+  .nav-left{font-size:10px;}
+  .nav-right{
+    display:none;position:fixed;top:58px;left:0;right:0;bottom:0;
+    background:rgba(6,6,10,0.98);backdrop-filter:blur(20px);
+    flex-direction:column;align-items:center;justify-content:center;
+    gap:2.5rem;z-index:99;
+  }
+  .nav-right.open{display:flex;}
+  .nav-right a{font-size:22px;letter-spacing:0.1em;}
 }
 
 /* ANIMATIONS */
@@ -312,15 +390,18 @@ footer{
 <canvas id="glcanvas"></canvas>
 <div class="noise"></div>
 
-<nav>
+<nav id="navbar">
   <div class="nav-left">Parbat Chaulagain</div>
-  <ul class="nav-right">
+  <ul class="nav-right" id="nav-menu">
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Work</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="status"><div class="status-dot"></div>Available for collab</div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span>
+  </button>
 </nav>
 
 <main>
@@ -331,8 +412,7 @@ footer{
     <p class="hero-tag">limox · kathmandu, nepal</p>
     <h1 class="hero-headline">
       <span class="hero-line l1">Parbat</span>
-      <span class="hero-line l2"><span class="outline">Chau</span><span class="green">la</span></span>
-      <span class="hero-line l3"><span class="outline">gain</span></span>
+      <span class="hero-line l2"><span class="outline">Chaulagain</span></span>
     </h1>
   </div>
   <div class="hero-bottom">
@@ -539,7 +619,7 @@ footer{
       </a>
       <a class="contact-link" href="https://www.instagram.com/limox_cypher/" target="_blank">
         <span class="cl-platform">Instagram</span>
-        <span class="cl-name">@_limox_</span>
+        <span class="cl-name">@limox_cypher</span>
       </a>
       <a class="contact-link" href="https://github.com/parbatzone" target="_blank">
         <span class="cl-platform">GitHub</span>
@@ -549,13 +629,13 @@ footer{
         <span class="cl-platform">LinkedIn</span>
         <span class="cl-name">parbat-chaulagain</span>
       </a>
-      <a class="contact-link" href="https://discord.com/users/_limox_" target="_blank">
+      <a class="contact-link" href="https://discord.com/users/limox_" target="_blank">
         <span class="cl-platform">Discord</span>
         <span class="cl-name">_limox_</span>
       </a>
       <a class="contact-link" href="https://www.instagram.com/bytex.news/" target="_blank">
         <span class="cl-platform">BYTEX</span>
-        <span class="cl-name">bytex.news</span>
+        <span class="cl-name">@bytex.news</span>
       </a>
     </div>
   </div>
@@ -569,6 +649,20 @@ footer{
 </footer>
 
 <script>
+// HAMBURGER MENU
+const hamburger=document.getElementById('hamburger');
+const navMenu=document.getElementById('nav-menu');
+hamburger.addEventListener('click',()=>{
+  hamburger.classList.toggle('open');
+  navMenu.classList.toggle('open');
+  document.body.style.overflow=navMenu.classList.contains('open')?'hidden':'';
+});
+navMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  hamburger.classList.remove('open');
+  navMenu.classList.remove('open');
+  document.body.style.overflow='';
+}));
+
 // CURSOR
 const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
 let mx=0,my=0,rx=0,ry=0;
