@@ -351,17 +351,64 @@ section::before{
   .skills-grid{grid-template-columns:1fr;}
   .skill-block{padding:1.4rem;}
   .terminal-body{padding:1rem 1.2rem;font-size:11px;}
-  .terminal{transform:none;}
-  .contact-big{font-size:clamp(36px,12vw,60px);}
-  .contact-links{grid-template-columns:1fr 1fr;}
-  .contact-link{padding:1.4rem 1.2rem 1.2rem;}
-  .cl-name{font-size:14px;}
-  footer{padding:1.4rem;flex-direction:column;align-items:flex-start;gap:0.5rem;}
+  .proj-num{font-size:10px;min-width:28px;}
+  .proj-name{font-size:clamp(15px,4.5vw,20px);}
+  .proj-status{font-size:9px;padding:3px 9px;}
+  .proj-arrow{width:28px;height:28px;font-size:13px;flex-shrink:0;}
+
+  /* SKILLS */
+  .skills-grid{
+    grid-template-columns:1fr 1fr;
+    border-radius:10px;
+  }
+  .skill-block{padding:1.2rem 1rem;}
+  .skill-block-label{font-size:9px;margin-bottom:1rem;}
+  .skill-list li{font-size:12px;gap:6px;}
+
+  /* TERMINAL */
+  .terminal{transform:none;margin-top:1.8rem;border-radius:10px;}
+  .terminal-head{padding:0.8rem 1rem;}
+  .terminal-body{padding:1rem 1.2rem;font-size:11px;line-height:2;}
+
+  /* CONTACT */
+  .contact-big{font-size:clamp(34px,11vw,56px);margin-bottom:2.5rem;line-height:0.92;}
+  .contact-links{
+    grid-template-columns:1fr;
+    border-radius:10px;
+    gap:1px;
+  }
+  .contact-link{
+    padding:1.4rem 1.4rem 1.2rem;
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+    gap:0;
+  }
+  .contact-link::after{font-size:12px;top:50%;transform:translateY(-50%) translate(-4px,0);right:1.2rem;}
+  .contact-link:hover::after{transform:translateY(-50%) translate(0,0);}
+  .cl-platform{font-size:9px;letter-spacing:0.12em;}
+  .cl-name{font-size:15px;}
+
+  /* FOOTER */
+  footer{padding:1.2rem;flex-direction:column;align-items:flex-start;gap:4px;}
+  .footer-copy,.footer-right{font-size:9px;}
 }
+
+/* ── RESPONSIVE — SMALL MOBILE ── */
 @media(max-width:400px){
-  .hero-headline{font-size:clamp(40px,13vw,60px);}
-  .contact-links{grid-template-columns:1fr;}
-  .nav-right{gap:1rem;}
+  nav{padding:0.9rem 1rem;}
+  .nav-left{font-size:9px;}
+  #hero{padding:0 1rem 1.6rem;padding-top:66px;}
+  .hero-headline{font-size:clamp(38px,13vw,56px);}
+  .hero-desc{font-size:12px;}
+  .section{padding:3rem 1rem;}
+  .about-stat-num{font-size:20px;}
+  .skills-grid{grid-template-columns:1fr;}
+  .skill-block{padding:1rem;}
+  .contact-big{font-size:clamp(30px,12vw,48px);}
+  .contact-link{padding:1.1rem 1rem;}
+  .cl-name{font-size:13px;}
+  .nav-right a{font-size:20px;}
 }
 
 /* HAMBURGER */
@@ -371,9 +418,15 @@ section::before{
 .hamburger.open span:last-child{transform:translateY(-6px) rotate(-45deg);}
 @media(max-width:768px){
   .hamburger{display:flex;}
-  .nav-right{display:none;position:fixed;top:58px;left:0;right:0;bottom:0;background:rgba(6,6,10,0.98);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:99;}
+  .nav-right{
+    display:none;position:fixed;top:0;left:0;right:0;bottom:0;
+    background:rgba(6,6,10,0.98);backdrop-filter:blur(24px);
+    flex-direction:column;align-items:center;justify-content:center;
+    gap:2.5rem;z-index:99;padding-top:60px;
+  }
   .nav-right.open{display:flex;}
-  .nav-right a{font-size:22px;letter-spacing:0.1em;}
+  .nav-right a{font-size:22px;letter-spacing:0.08em;color:var(--white);}
+  .nav-right a:hover{color:var(--green);}
 }
 
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
@@ -381,8 +434,7 @@ section::before{
 
 /* ── 3D TILT GLOW ── */
 .tilt-glow{pointer-events:none;position:absolute;inset:0;border-radius:inherit;opacity:0;transition:opacity 0.4s;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(0,255,136,0.07),transparent 60%);z-index:0;}
-.project-row:hover .tilt-glow,.skill-block:hover .tilt-glow,.contact-link:hover .tilt-glow{opacity:1;}
-</style>
+.project-row:hover .tilt-glow,.skill-block:hover .tilt-glow,.contact-link:hover .tilt-glow{opacity:1;}</style>
 </head>
 <body>
 
@@ -894,10 +946,13 @@ function addTilt(els, intensity=8){
     });
   });
 }
-addTilt(document.querySelectorAll('.project-row'), 6);
-addTilt(document.querySelectorAll('.skill-block'), 10);
-addTilt(document.querySelectorAll('.contact-link'), 8);
-addTilt(document.querySelectorAll('.about-stat'), 12);
+// Only apply tilt on non-touch devices (mouse users)
+if(!('ontouchstart' in window)){
+  addTilt(document.querySelectorAll('.project-row'), 6);
+  addTilt(document.querySelectorAll('.skill-block'), 10);
+  addTilt(document.querySelectorAll('.contact-link'), 8);
+  addTilt(document.querySelectorAll('.about-stat'), 12);
+}
 
 
 /* ════════════════════════════════════════════════
