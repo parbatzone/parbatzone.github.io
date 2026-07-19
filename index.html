@@ -288,7 +288,8 @@ main{position:relative;z-index:2;}
 .contact-link:hover::after{opacity:1;transform:translate(0,0);}
 .contact-link:hover .cl-name{color:var(--green);}
 .cl-platform{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;}
-.cl-name{font-family:var(--display);font-size:18px;font-weight:700;color:var(--white);transition:color 0.3s;letter-spacing:-0.01em;}
+.cl-name{font-family:var(--display);font-size:18px;font-weight:700;color:var(--white);transition:color 0.3s;letter-spacing:-0.01em;overflow-wrap:break-word;word-break:break-word;}
+.cl-name.cl-name-long{font-size:15px;}
 
 /* ── FOOTER ── */
 footer{
@@ -388,6 +389,7 @@ section::before{
   .contact-link:hover::after{transform:translateY(-50%) translate(0,0);}
   .cl-platform{font-size:9px;letter-spacing:0.12em;}
   .cl-name{font-size:15px;}
+  .cl-name.cl-name-long{font-size:12px;}
 
   /* FOOTER */
   footer{padding:1.2rem;flex-direction:column;align-items:flex-start;gap:4px;}
@@ -676,7 +678,7 @@ section::before{
       <a class="contact-link" href="mailto:contact@parbatchaulagain.com.np">
         <div class="tilt-glow"></div>
         <span class="cl-platform">Email</span>
-        <span class="cl-name">contact@parbatchaulagain.com.np</span>
+        <span class="cl-name cl-name-long">contact@parbatchaulagain.com.np</span>
       </a>
       <a class="contact-link" href="https://www.instagram.com/limox_cypher/" target="_blank" rel="noopener">
         <div class="tilt-glow"></div>
