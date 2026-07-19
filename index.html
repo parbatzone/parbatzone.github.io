@@ -452,7 +452,7 @@ section::before{
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="status"><div class="status-dot"></div>Available for collab</div>
-  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span></button>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
 </nav>
 
 <main>
@@ -493,16 +493,16 @@ section::before{
     <div class="marquee-item"><span class="dot"></span>Ubuntu Server</div>
     <div class="marquee-item"><span class="dot"></span>BYTEX Media</div>
     <div class="marquee-item"><span class="dot"></span>eJPT Prep</div>
-    <div class="marquee-item"><span class="dot"></span>Cybersecurity</div>
-    <div class="marquee-item"><span class="dot"></span>Node.js</div>
-    <div class="marquee-item"><span class="dot"></span>Python</div>
-    <div class="marquee-item"><span class="dot"></span>Discord Bots</div>
-    <div class="marquee-item"><span class="dot"></span>Kali Linux</div>
-    <div class="marquee-item"><span class="dot"></span>Next.js</div>
-    <div class="marquee-item"><span class="dot"></span>WiFi Pentesting</div>
-    <div class="marquee-item"><span class="dot"></span>Ubuntu Server</div>
-    <div class="marquee-item"><span class="dot"></span>BYTEX Media</div>
-    <div class="marquee-item"><span class="dot"></span>eJPT Prep</div>
+    <div class="marquee-item" aria-hidden="true"><span class="dot"></span>Cybersecurity</div>
+    <div class="marquee-item" aria-hidden="true"><span class="dot"></span>Node.js</div>
+    <div class="marquee-item" aria-hidden="true"><span class="dot"></span>Python</div>
+    <div class="marquee-item" aria-hidden="true"><span class="dot"></span>Discord Bots</div>
+    <div class="marquee-item" aria-hidden="true"><span class="dot"></span>Kali Linux</div>
+    <div class="marquee-item" aria-hidden="true"><span class="dot"></span>Next.js</div>
+    <div class="marquee-item" aria-hidden="true"><span class="dot"></span>WiFi Pentesting</div>
+    <div class="marquee-item" aria-hidden="true"><span class="dot"></span>Ubuntu Server</div>
+    <div class="marquee-item" aria-hidden="true"><span class="dot"></span>BYTEX Media</div>
+    <div class="marquee-item" aria-hidden="true"><span class="dot"></span>eJPT Prep</div>
   </div>
 </div>
 
@@ -558,7 +558,7 @@ section::before{
       <h2 class="projects-title">Selected<br>Projects</h2>
     </div>
 
-    <a class="project-row r" href="https://bytex.news" target="_blank">
+    <a class="project-row r" href="https://bytex.news" target="_blank" rel="noopener">
       <div class="tilt-glow"></div>
       <span class="proj-num">01</span>
       <span class="proj-name">BYTEX</span>
@@ -582,7 +582,7 @@ section::before{
       <span class="proj-arrow">→</span>
     </div>
 
-    <a class="project-row r r3" href="#" target="_blank">
+    <div class="project-row r r3">
       <div class="tilt-glow"></div>
       <span class="proj-num">03</span>
       <span class="proj-name">Pixel Production</span>
@@ -590,9 +590,9 @@ section::before{
         <span class="proj-tag">Photography</span>
         <span class="proj-tag">Python</span>
       </div>
-      <span class="proj-status s-live">Live</span>
-      <span class="proj-arrow">↗</span>
-    </a>
+      <span class="proj-status s-wip">In Progress</span>
+      <span class="proj-arrow">→</span>
+    </div>
 
     <div class="project-row r r4">
       <div class="tilt-glow"></div>
@@ -673,32 +673,32 @@ section::before{
       <span class="green">together.</span>
     </h2>
     <div class="contact-links r">
-      <a class="contact-link" href="mailto:limoxlost@proton.me">
+      <a class="contact-link" href="mailto:contact@parbatchaulagain.com.np">
         <div class="tilt-glow"></div>
         <span class="cl-platform">Email</span>
         <span class="cl-name">contact@parbatchaulagain.com.np</span>
       </a>
-      <a class="contact-link" href="https://www.instagram.com/limox_cypher/" target="_blank">
+      <a class="contact-link" href="https://www.instagram.com/limox_cypher/" target="_blank" rel="noopener">
         <div class="tilt-glow"></div>
         <span class="cl-platform">Instagram</span>
         <span class="cl-name">@limox_cypher</span>
       </a>
-      <a class="contact-link" href="https://github.com/parbatzone" target="_blank">
+      <a class="contact-link" href="https://github.com/parbatzone" target="_blank" rel="noopener">
         <div class="tilt-glow"></div>
         <span class="cl-platform">GitHub</span>
         <span class="cl-name">parbatzone</span>
       </a>
-      <a class="contact-link" href="https://www.linkedin.com/in/parbat-chaulagain-5004b1366/" target="_blank">
+      <a class="contact-link" href="https://www.linkedin.com/in/parbat-chaulagain-5004b1366/" target="_blank" rel="noopener">
         <div class="tilt-glow"></div>
         <span class="cl-platform">LinkedIn</span>
         <span class="cl-name">parbat-chaulagain</span>
       </a>
-      <a class="contact-link" href="https://discord.com/users/limox_" target="_blank">
+      <a class="contact-link" href="https://discord.com/users/limox_" target="_blank" rel="noopener">
         <div class="tilt-glow"></div>
         <span class="cl-platform">Discord</span>
         <span class="cl-name">_limox_</span>
       </a>
-      <a class="contact-link" href="https://www.instagram.com/bytex.news/" target="_blank">
+      <a class="contact-link" href="https://www.instagram.com/bytex.news/" target="_blank" rel="noopener">
         <div class="tilt-glow"></div>
         <span class="cl-platform">BYTEX</span>
         <span class="cl-name">@bytex.news</span>
@@ -710,7 +710,7 @@ section::before{
 </main>
 
 <footer>
-  <span class="footer-copy">© 2025 Parbat Chaulagain</span>
+  <span class="footer-copy">© 2026 Parbat Chaulagain</span>
   <span class="footer-right">Built with obsession · <span>limox</span></span>
 </footer>
 
@@ -722,6 +722,7 @@ section::before{
    THREE.JS — 3D IMMERSIVE HERO SCENE
 ════════════════════════════════════════════════ */
 (function(){
+  if (typeof THREE === 'undefined') return;
   const canvas = document.getElementById('three-canvas');
   const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -837,7 +838,7 @@ section::before{
   let scrollProgress = 0;
   window.addEventListener('scroll', ()=>{
     const maxScroll = document.body.scrollHeight - window.innerHeight;
-    scrollProgress = window.scrollY / maxScroll;
+    scrollProgress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
   });
 
   /* ── RESIZE ── */
@@ -849,6 +850,8 @@ section::before{
 
   /* ── ANIMATE ── */
   const clock = new THREE.Clock();
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   function animate(){
     requestAnimationFrame(animate);
     const t = clock.getElapsedTime();
@@ -857,27 +860,29 @@ section::before{
     mouse.x += (mouse.tx - mouse.x) * 0.05;
     mouse.y += (mouse.ty - mouse.y) * 0.05;
 
-    // Rotate geometry
-    ico.rotation.x = t * 0.12 + mouse.y * 0.3;
-    ico.rotation.y = t * 0.18 + mouse.x * 0.3;
-    inner.rotation.x = -t * 0.08;
-    inner.rotation.y = t * 0.14 + mouse.x * 0.2;
-    torus.rotation.z = t * 0.08;
-    torus2.rotation.z = -t * 0.06;
+    if(!prefersReducedMotion){
+      // Rotate geometry
+      ico.rotation.x = t * 0.12 + mouse.y * 0.3;
+      ico.rotation.y = t * 0.18 + mouse.x * 0.3;
+      inner.rotation.x = -t * 0.08;
+      inner.rotation.y = t * 0.14 + mouse.x * 0.2;
+      torus.rotation.z = t * 0.08;
+      torus2.rotation.z = -t * 0.06;
 
-    // Particles slow drift
-    particles.rotation.y = t * 0.015 + mouse.x * 0.04;
-    particles.rotation.x = t * 0.008 + mouse.y * 0.03;
+      // Particles slow drift
+      particles.rotation.y = t * 0.015 + mouse.x * 0.04;
+      particles.rotation.x = t * 0.008 + mouse.y * 0.03;
+
+      // Pulse opacity
+      icoMat.opacity = 0.12 + Math.sin(t * 0.7) * 0.06;
+      pMat.opacity   = 0.6  + Math.sin(t * 0.4) * 0.15;
+    }
 
     // Camera parallax + scroll
     camera.position.x += (mouse.x * 1.5 - camera.position.x) * 0.04;
     camera.position.y += (mouse.y * 0.8 - camera.position.y) * 0.04;
     camera.position.z = 18 - scrollProgress * 8;
     camera.lookAt(0, 0, 0);
-
-    // Pulse opacity
-    icoMat.opacity = 0.12 + Math.sin(t * 0.7) * 0.06;
-    pMat.opacity   = 0.6  + Math.sin(t * 0.4) * 0.15;
 
     renderer.render(scene, camera);
   }
@@ -891,32 +896,36 @@ section::before{
 const hamburger = document.getElementById('hamburger');
 const navMenu   = document.getElementById('nav-menu');
 hamburger.addEventListener('click', ()=>{
-  hamburger.classList.toggle('open');
+  const isOpen = hamburger.classList.toggle('open');
   navMenu.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', isOpen);
   document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
 });
 navMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
   hamburger.classList.remove('open');
   navMenu.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
 }));
 
 
 /* ════════════════════════════════════════════════
-   CUSTOM CURSOR
+   CUSTOM CURSOR (mouse users only)
 ════════════════════════════════════════════════ */
-const cur  = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-let mx=0, my=0, rx=0, ry=0;
-document.addEventListener('mousemove', e=>{
-  mx = e.clientX; my = e.clientY;
-  cur.style.left = mx+'px'; cur.style.top = my+'px';
-});
-(function loop(){
-  rx += (mx-rx)*0.11; ry += (my-ry)*0.11;
-  ring.style.left = rx+'px'; ring.style.top = ry+'px';
-  requestAnimationFrame(loop);
-})();
+if(!('ontouchstart' in window)){
+  const cur  = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let mx=0, my=0, rx=0, ry=0;
+  document.addEventListener('mousemove', e=>{
+    mx = e.clientX; my = e.clientY;
+    cur.style.left = mx+'px'; cur.style.top = my+'px';
+  });
+  (function loop(){
+    rx += (mx-rx)*0.11; ry += (my-ry)*0.11;
+    ring.style.left = rx+'px'; ring.style.top = ry+'px';
+    requestAnimationFrame(loop);
+  })();
+}
 
 
 /* ════════════════════════════════════════════════
